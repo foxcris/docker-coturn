@@ -16,8 +16,7 @@ then
     
     if [ "$TURN_SECRET" -eq "" ]
     then
-      #TURN_SECRET=`date +%s | sha256sum | base64 | head -c 32`
-      TURN_SECRET=`pwgen -s 64 1`
+      TURN_SECRET=`date +%s | sha256sum | base64 | head -c 64`
     fi
     echo "static-auth-secret ${TURN_SECRET}" >> /etc/turnserver.conf
     
@@ -103,7 +102,9 @@ then
         echo "denied-peer-ip ${peer}" >> /etc/turnserver.conf
       done 
     fi
-    --log-file /var/log/turnserver
+    
+    echo "log-file /var/log/turnserver" >> /etc/turnserver.conf
+    
 fi
 
 echo "Starting TURN/STUN server"
