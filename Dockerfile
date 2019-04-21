@@ -20,10 +20,10 @@ RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-g
 RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get install -y coturn && apt-get clean
 
 RUN mv /etc/turnserver.conf /etc/turnserver.conf_default
+RUN echo "TURNSERVER_ENABLED=1" >> /etc/default/coturn
 
 VOLUME /var/log
 
-EXPOSE 8478
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
