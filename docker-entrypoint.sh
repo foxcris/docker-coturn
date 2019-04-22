@@ -28,7 +28,7 @@ then
     
     if [ "$TURN_PORT" -eq "" ]
     then
-      TURN_PORT=8478
+      TURN_PORT=3478
     fi
     echo "listening-port ${TURN_PORT}" >> /etc/turnserver.conf
     
