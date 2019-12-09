@@ -1,11 +1,11 @@
-FROM debian:stretch
+FROM debian:buster
 
 MAINTAINER foxcris
 
 #repositories richtig einrichten
-RUN echo 'deb http://deb.debian.org/debian stretch main' > /etc/apt/sources.list
-RUN echo 'deb http://deb.debian.org/debian stretch-updates main' >> /etc/apt/sources.list
-RUN echo 'deb http://security.debian.org stretch/updates main' >> /etc/apt/sources.list
+RUN echo 'deb http://deb.debian.org/debian buster main' > /etc/apt/sources.list
+RUN echo 'deb http://deb.debian.org/debian buster-updates main' >> /etc/apt/sources.list
+RUN echo 'deb http://security.debian.org buster/updates main' >> /etc/apt/sources.list
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales && apt-get clean
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
